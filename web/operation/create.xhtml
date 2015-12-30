@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Operations - #{compteController.compte.rib}</title>
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <h2>Gestion du compte #{compteController.compte.rib}</h2>
+            <h:form>
+                TYPE : <h:selectOneMenu value="#{operationController.operation.type}">
+                    <f:selectItem itemValue="debit" itemLabel="débit"/>
+                    <f:selectItem itemValue="credit" itemLabel="crédit"/>
+                </h:selectOneMenu>
+                Montant : <h:inputText value="#{operationController.operation.montant}"></h:inputText>
+                <p:commandButton actionListener="#{operationController.affecter()}" value="Ajouté" update=":listOp :compteForm:data"></p:commandButton>
+            </h:form>
+
+            <ui:include src="list.xhtml" />
+        </ui:composition>
+    </h:body>
+</html>
+
